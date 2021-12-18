@@ -21,11 +21,12 @@ app.use(express.urlencoded({
 }));
 app.use(cors())
 
+
+app.use('/api/v1/admin/',routes)
+
 app.use('/' , (req ,res ) => {
   res.json('Hey , Welcome to jobsWay Admin Service')
 })
-
-app.use('/api/v1/admin/',routes)
 
 db.connect((err)=>{
   if(err) console.log("Database Connection Error => "+err);
