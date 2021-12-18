@@ -9,8 +9,6 @@ module.exports = {
         
         var errors = validationResult(req)
 
-        console.log("hellooooooo",req.body);
-
         const { email, password } = req.body;
         try {
             const admin = await db.get().collection('admin').findOne({ email })
@@ -19,7 +17,7 @@ module.exports = {
 
             const checkPassword = await bcrypt.compare(password, admin.password)
 
-            if (!checkPassword) return res.status(200).json('Invalid Credentials.')
+            if (!checkPassword) return res.status(403).json('Invalid Credentials.')
 
             const token = jwt.sign({ email: admin.email, id: admin._id }, 'secret', { expiresIn: "1h" })
 
