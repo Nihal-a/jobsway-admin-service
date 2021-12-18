@@ -9,6 +9,8 @@ module.exports = {
         try {
             var unVerifiedCompanies = await db.get().collection(collection.COMPANY_COLLECTION).find({ status: false }).toArray()
 
+            console.log(unVerifiedCompanies);
+
             res.status(200).json(unVerifiedCompanies)
 
         } catch (error) {
