@@ -21,6 +21,9 @@ app.use(express.urlencoded({
 }));
 app.use(cors())
 
+app.use('/' , (req ,res ) => {
+  res.json('Hey , Welcome to jobsWay Admin Service')
+})
 
 app.use('/api/v1/admin/',routes)
 
