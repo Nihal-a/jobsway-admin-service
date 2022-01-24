@@ -7,12 +7,13 @@ var {validateSignin} =  require('../middlewares/AuthMiddleware')
 
 const router = express.Router();
 
+router.get('/' , (req , res)=> res.json('Welcome to Admin Service.'))
+
 //Auth routes
 router.post('/signin',validateSignin,signin)
 
-
 //company routes
-router.get('/', getUnVerifiedCompanies)
+router.get('/companies/unverified', getUnVerifiedCompanies)
 router.get('/companies', getVerifiedCompanies)
 router.patch('/company/approve', verifyCompany)
 router.patch('/company/reject', rejectCompany)
