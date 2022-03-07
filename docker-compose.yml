@@ -1,0 +1,13 @@
+version: '3'
+services:
+  jobs-way-admin-service:
+    image: jobsway-admin-service
+    build:
+      context: .
+    env_file:
+      - .env
+    environment: 
+      - MONGODB_URL=${MONGODB_URL}
+      - MONGODB_NAME=${MONGODB_NAME}
+    ports:
+      - 4001:4001
